@@ -51,6 +51,9 @@ module.exports = {
 			},
 			fontFamily: {
 
+				geomanist_bold: [ "Geomanist Bold", "sans-serif" ],
+				geomanist_book: [ "Geomanist Book", "sans-serif" ],
+				geomanist_light: [ "Geomanist Light", "sans-serif" ]
 
 			}
 
