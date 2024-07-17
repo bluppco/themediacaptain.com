@@ -23,7 +23,7 @@ module.exports = {
 
 		},
     	extend: {
-
+			
 			keyframes: {
 
 				"accordion-down": {
