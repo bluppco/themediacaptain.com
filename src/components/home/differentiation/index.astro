@@ -1,7 +1,7 @@
 ---
 
 // IMPORT ASTRO ATOMS
-import ButtonSky from "@/atoms/atoms-shiva/button/cyan/index.astro"
+import ButtonCyan from "@/atoms/atoms-shiva/button/cyan/index.astro"
 import HeadingsTwoThreeXl from "@/atoms/atoms-shiva/headings/two/three-xl/index.astro"
 import ParagraphLg from "@/atoms/atoms-shiva/paragraphs/lg/index.astro"
 import PictureCover from "@/atoms/picture/internal/index.astro"
@@ -41,36 +41,40 @@ const data = {
 
 <section class="bg-gray-100 py-12">
     <div class="grid gap-4 grid-cols-1 lg:grid-cols-2">
-        <div class="p-4">
+        <div class="p-4 w-full aspect-[6/4]">
             <PictureCover
-                alternative_text={data.alternative_text}
-                source={data.source}
+                alternative_text={ data.alternative_text }
+                source={ data.source }
             />
         </div>
         <div class="flex lg:items-center justify-center py-6 px-4 xl:pr-32">
             <div class="flex flex-col gap-4">
-                <HeadingsTwoThreeXl>{data.title}</HeadingsTwoThreeXl>
+                <HeadingsTwoThreeXl>{ data.title }</HeadingsTwoThreeXl>
                 <ParagraphLg>
                     {
 
-                        data.description_parts.map((part) => 
+                        data.description_parts.map(( part ) => 
 
                             part.link ? (
+
                                 <a href={ part.link }>
                                     <span class="text-orange-500 hover:text-cyan-700 duration-300">{ part.text }</span>
                                 </a>
+
                             ) : (
+
                                 part.text
+
                             )
 
                         )
 
                     }
                 </ParagraphLg>
-                <ButtonSky
-                    button_link={data.button_link}
-                    button_text={data.button_text}
-                />
+                <a href={ data.button_link }>
+                    <ButtonCyan button_text={ data.button_text }/>
+                </a>
+                
             </div>
         </div>
     </div>
