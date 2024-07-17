@@ -1,0 +1,66 @@
+---
+
+// IMPORT ASTRO LAYOUTS
+import Container from "@/layouts/container/index.astro"
+
+// IMPORT ASTRO ATOMS
+import PictureContain from "@/atoms/picture/internal/contain/index.astro"
+
+// HARDCODED DATA
+const image_source = [
+
+    {
+        alternative_text: "google",
+        source: "/images/google-reviews.png"
+    },
+    {
+        alternative_text: "upcity",
+        source: "/images/upcity-clutch-reviews.png"
+    },
+    {
+        alternative_text: "clutch",
+        source: "/images/clutch-reviews.png"
+    },
+
+]
+
+---
+
+<section class="bg-slate-900 py-4 md:py-8 xl:py-10">
+    <Container>
+        <div class={`grid grid-cols-${image_source.length}`}>
+            {
+
+                image_source.map((data, index) => {
+
+                    const isFirst = index === 0
+                    const isLast = index === image_source.length - 1
+                    let borderClass = ''
+
+                    if (isFirst) {
+                        borderClass = 'border-r border-white'
+                    } 
+                    else if (isLast) {
+                        borderClass = 'border-l border-white'
+                    } 
+                    else {
+                        borderClass = 'border-l border-r border-white'
+                    }
+
+                    return (
+                        <div class={`py-6 md:p-8 xl:p-14 flex items-center justify-center ${ borderClass }`}>
+                            <div class="max-w-96">
+                                <PictureContain
+                                    alternative_text={ data.alternative_text }
+                                    source={ data.source }
+                                />
+                            </div>
+                        </div>
+                    )
+
+                })
+
+            }
+        </div>
+    </Container>
+</section>
