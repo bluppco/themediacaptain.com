@@ -1,13 +1,142 @@
 ---
 
+// IMPORT ASTRO ATOMS
+import Heading5 from "@/atoms-diksha/headings/five/lg/index.astro"
+import IconButton from "@/atoms-diksha/buttons/icon/index.astro"
+import Logo from "@/atoms-diksha/logo/index.astro"
+import SolidButton from "@/atoms-diksha/buttons/solid-button/index.astro"
+
+// IMPORT ASTRO COMPONENTS
+import DropdownItems from "@/components/common/header/nav-items/dropdown-items/index.astro"
+import NavItems from "@/components/common/header/nav-items/index.astro"
+
 // IMPORT ASTRO LAYOUTS
 import Container from "@/layouts/container/index.astro"
+import { doPreparation } from "astro/virtual-modules/transitions-events.js"
+
+const nav =[{
+    title:"About Us",
+    dropdown:["About Us", "Meet the Team", "Location", "FAQ's", "Accolades", "Featured On"]
+    }, 
+    {
+        title:"Services",
+    },
+    {
+        title:"Industries", 
+        dropdown:["B2B", "Legal", "Medical", "eCommerce", "Beauty", "Home Services", "View All"]    
+    },
+    {
+        title:"Portfolio",
+        dropdown:["Website Portfolio", "Marketing Succes Stories"]
+    },
+    {
+        title:"Resources",
+        dropdown:["Marketing Events", "Blog", "Youtube Channel"]  
+    },
+    {
+        title:"Reviews",
+    }
+]
+
+const services =[
+    {
+        title:"Marketing",
+        services:[
+            {serviceName: "SEO"}, 
+            {
+                serviceName:"Paid Adverstising",
+                subServices:["PPC", "Shopping", "Amazon", "Social Media"]
+            }, 
+            {
+                serviceName:"Email Marketing",
+                subServices:["SMS Marketing", "Klaviyo"]
+            }, 
+            {
+                serviceName:"Social Media",
+                subServices:["Social Posts", "Social Ads"]
+            },
+        ]
+    },
+    {
+        title:"Web Design & Development",
+        services:[
+            {serviceName: "Web design"}, 
+            {serviceName: "Graphic design"}, 
+            {serviceName: "WordPress"}, 
+            {
+                serviceName:"eCommerce",
+                subServices:["WooCommerce", "Shopify"]
+            }, 
+        ]
+    },
+    {
+        title:"Other Services",
+        services:[
+            {serviceName: "Amazon"},
+            {serviceName: "HubSpot"},
+            {serviceName: "Review Management"},
+        ]
+    }
+]
 
 ---
-<header class="bg-blue-600 h-12">
-    <Container>
-        <section class="flex items-center h-full">
-            <p class="text-white">I am header</p>
-        </section>
-    </Container>
+
+<header class="sticky top-0 bg-white">
+    <section class="flex items-center justify-between px-8 py-8 lg:px-16 lg:py-12">
+        <Logo />
+        <!-- nav bar on large screen  -->
+        <div class="hidden lg:flex items-center gap-8">
+            <nav class="flex justify-center gap-8">
+                {nav.map((item) => {
+                  if (item.title === "Reviews") {
+                    return <Heading5>{item.title}</Heading5>
+                  }
+                  if (item.title === "Services") {
+                    return <div class="group relative">
+                        <NavItems item={item} link="#" />
+                        {/* service dropdown menu */}
+                        {/* <div class="absolute top-10 -left-40 flex-col flex-wrap gap-4 text-black bg-white py-2 px-8 justify-around hidden group-hover:flex shadow-2xl h-[500px] w-[600px]">
+                            {services.map((serviceItem) => (
+                                <a href="#" class="">
+                                    <div class="flex flex-col gap-2">
+                                        <Heading5>{serviceItem.title}</Heading5>
+                                        <ul class="ml-6">
+                                            {serviceItem.services.map((service) => (
+                                                <li class="mb-2">
+                                                    {service.serviceName}
+                                                    {service.subServices && (
+                                                    <ul class="list-[url('/icons/list-arrow-icon.svg')] ml-6">
+                                                        {service.subServices.map((subService) => (
+                                                            <li>{subService}</li>
+                                                        ))}
+                                                    </ul>
+                                                )}  
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </a>
+                            ))}
+                        </div> */}
+                    </div>
+                  }
+                  return (
+                    <div class="group relative">
+                      <NavItems item={item} link="#" />
+                      <div class="absolute top-10 w-64 flex-col gap-4 text-black bg-white py-2 px-8 justify-around hidden group-hover:flex">
+                        {item.dropdown.map((menuItem) => (
+                          <DropdownItems link="#" menuItem={menuItem} />
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </nav>              
+            <SolidButton>Contact us</SolidButton>
+        </div>
+        <!-- menu bar on small screen  -->
+        <div class="block lg:hidden">
+            <IconButton>menu</IconButton>
+        </div>
+    </section>
 </header>
