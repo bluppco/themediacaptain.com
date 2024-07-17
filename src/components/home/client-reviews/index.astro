@@ -1,0 +1,28 @@
+---
+
+//IMPORT ASTRO ATOMS
+import Heading2 from "@/atoms-diksha/headings/two/6xl/medium/index.astro"
+import IconButton from "@/atoms-diksha/buttons/icon/index.astro"
+import SolidButton from "@/atoms-diksha/buttons/solid-button/color-grey/index.astro"
+
+//IMPORT ASTRO COMPONENTS
+import GoogleReviewCard from "@/components/home/client-reviews/google-review-card/index.astro"
+import ReviewCard from "@/components/home/client-reviews/review-card/index.astro"
+
+---
+
+<section class="py-12 px-6 md:py-16 md:px-8">
+	<div class="hidden md:flex items-end justify-between">
+		<Heading2>Client Reviews</Heading2>
+		<SolidButton>View All</SolidButton>
+	</div>
+	<div class="flex flex-col gap-16 md:flex-row items-center px-12 py-20">
+		<GoogleReviewCard />
+		<!-- <div class="flex gap-4">
+		    <IconButton size="lg">arrow_back_ios</IconButton>
+			<ReviewCard />
+			<IconButton size="lg">arrow_forward_ios</IconButton>
+		</div> -->
+	</div>
+	<div class="md:hidden flex flex-col justify-between"></div>
+</section>
