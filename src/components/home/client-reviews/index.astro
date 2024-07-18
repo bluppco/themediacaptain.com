@@ -16,13 +16,22 @@ import ReviewCard from "@/components/home/client-reviews/review-card/index.astro
 		<Heading2>Client Reviews</Heading2>
 		<SolidButton>View All</SolidButton>
 	</div>
-	<div class="flex flex-col gap-16 md:flex-row items-center px-12 py-20">
-		<GoogleReviewCard />
-		<!-- <div class="flex gap-4">
-		    <IconButton size="lg">arrow_back_ios</IconButton>
-			<ReviewCard />
+	<div class="flex flex-col gap-8 justify-between md:flex-row items-center px-6 py-12 md:px-12 md:py-20">
+		<div class="block md:hidden"><Heading2>Client Reviews</Heading2></div>
+		<div class="block"><GoogleReviewCard /></div>
+		<div class="flex">
+			<IconButton size="lg">arrow_back_ios</IconButton>
+			<div class="w-[300px] md:w-[600px] lg:w-[900px] flex gap-4 overflow-x-hidden">
+				{
+					Array(4)
+						.fill(0)
+						.map(() => (
+							<ReviewCard />
+						))
+				}
+			</div>
 			<IconButton size="lg">arrow_forward_ios</IconButton>
-		</div> -->
+		</div>
+		<div class="block md:hidden"><SolidButton>View All</SolidButton></div>
 	</div>
-	<div class="md:hidden flex flex-col justify-between"></div>
 </section>
