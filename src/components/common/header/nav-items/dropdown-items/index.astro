@@ -1,12 +1,18 @@
 ---
 
+// IMPORT ASTRO ATOMS
+import Anchor from "@/atoms-diksha/anchor/index.astro"
+
 // GET ASTRO PROPS
-const { link, menuItem } = Astro.props;
+const { 
+    link, 
+    menuItem 
+} = Astro.props
 
 ---
 
-<a href={link}>
-    <p class="text-lg font-geomanist_light font-medium whitespace-nowrap hoverr:text-color-accent">
+<Anchor link={ link }>
+    <p class="text-lg font-geomanist_light font-medium whitespace-nowrap hover:text-color-accent">
         { menuItem }
     </p>
-</a>
+</Anchor>

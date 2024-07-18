@@ -1,19 +1,20 @@
 ---
 
-// IMPORT ASTRO ATOMS
-import Heading5 from "@/atoms-diksha/headings/five/lg/index.astro"
-import IconButton from "@/atoms-diksha/buttons/icon/index.astro"
-import Logo from "@/atoms-diksha/logo/index.astro"
-import SolidButton from "@/atoms-diksha/buttons/solid-button/color-accent/index.astro"
+// IMPORT ASTRO LAYOUTS
+import Container from "@/layouts/container/index.astro"
+import { doPreparation } from "astro/virtual-modules/transitions-events.js"
 
 // IMPORT ASTRO COMPONENTS
 import DropdownItems from "@/components/common/header/nav-items/dropdown-items/index.astro"
 import NavItems from "@/components/common/header/nav-items/index.astro"
 
-// IMPORT ASTRO LAYOUTS
-import Container from "@/layouts/container/index.astro"
-import { doPreparation } from "astro/virtual-modules/transitions-events.js"
+// IMPORT ASTRO ATOMS
+import ButtonAccent from "@/atoms-diksha/buttons/color-accent/index.astro"
+import HeadingFiveLg from "@/atoms-diksha/headings/five/lg/index.astro"
+import IconButton from "@/atoms-diksha/buttons/icon/index.astro"
+import Logo from "@/atoms-diksha/logo/index.astro"
 
+// CONSTANTS
 const nav =[{
     title:"About Us",
     dropdown:["About Us", "Meet the Team", "Location", "FAQ's", "Accolades", "Featured On"]
@@ -87,52 +88,32 @@ const services =[
         <!-- nav bar on large screen  -->
         <div class="hidden lg:flex items-center gap-8">
             <nav class="flex justify-center gap-8">
-                {nav.map((item) => {
-                  if (item.title === "Reviews") {
-                    return <Heading5>{item.title}</Heading5>
-                  }
-                  if (item.title === "Services") {
-                    return <div class="group relative">
-                        <NavItems item={item} link="#" />
-                        {/* service dropdown menu */}
-                        {/* <div class="absolute top-10 -left-40 flex-col flex-wrap gap-4 text-black bg-white py-2 px-8 justify-around hidden group-hover:flex shadow-2xl h-[500px] w-[600px]">
-                            {services.map((serviceItem) => (
-                                <a href="#" class="">
-                                    <div class="flex flex-col gap-2">
-                                        <Heading5>{serviceItem.title}</Heading5>
-                                        <ul class="ml-6">
-                                            {serviceItem.services.map((service) => (
-                                                <li class="mb-2">
-                                                    {service.serviceName}
-                                                    {service.subServices && (
-                                                    <ul class="list-[url('/icons/list-arrow-icon.svg')] ml-6">
-                                                        {service.subServices.map((subService) => (
-                                                            <li>{subService}</li>
-                                                        ))}
-                                                    </ul>
-                                                )}  
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </a>
-                            ))}
-                        </div> */}
-                    </div>
-                  }
-                  return (
-                    <div class="group relative">
-                      <NavItems item={item} link="#" />
-                      <div class="absolute top-10 w-64 flex-col gap-4 text-black bg-white py-2 px-8 justify-around hidden group-hover:flex">
-                        {item.dropdown.map((menuItem) => (
-                          <DropdownItems link="#" menuItem={menuItem} />
-                        ))}
-                      </div>
-                    </div>
-                  );
-                })}
+                {   
+                    nav.map((item) => {
+                        if (item.title === "Reviews") {
+                            return <HeadingFiveLg>{ item.title }</HeadingFiveLg>
+                        }
+                        if (item.title === "Services") {
+                            return (
+                                <div class="group relative">
+                                        <NavItems item={ item } link="#" />
+                                </div>
+                            ) 
+                        }
+                        return (
+                            <div class="group relative">
+                                <NavItems item={ item } link="#" />
+                                <div class="absolute top-10 w-64 flex-col gap-4 text-black bg-white py-2 px-8 justify-around hidden group-hover:flex">
+                                    {item.dropdown.map((menuItem) => (
+                                    <DropdownItems link="#" menuItem={ menuItem } />
+                                    ))}
+                                </div>
+                            </div>
+                        );
+                    })
+                }
               </nav>              
-            <SolidButton>Contact us</SolidButton>
+            <ButtonAccent>Contact us</ButtonAccent>
         </div>
         <!-- menu bar on small screen  -->
         <div class="block lg:hidden">

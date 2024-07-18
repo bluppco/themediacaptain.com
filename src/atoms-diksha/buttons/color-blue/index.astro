@@ -1,0 +1,9 @@
+---
+
+//GET ASTRO PROPS
+const { styles } = Astro.props;
+---
+
+<button class=`rounded-full bg-blue-600 px-2 py-1 text-[12px] text-white font-geomanist_light ${styles}`>
+    <slot/>
+</button>

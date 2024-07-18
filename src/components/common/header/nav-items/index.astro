@@ -1,18 +1,22 @@
 ---
 
 // IMPORT ASTRO ATOMS
-import Heading5 from "@/atoms-diksha/headings/five/lg/index.astro"
+import Anchor from "@/atoms-diksha/anchor/index.astro"
+import HeadingFiveLg from "@/atoms-diksha/headings/five/lg/index.astro"
 import IconButton from "@/atoms-diksha/buttons/icon/index.astro"
 
 //GET ASTRO RPOPS
-const { item, link } = Astro.props;
+const { 
+    item, 
+    link 
+} = Astro.props
 
 ---
 
-<a href={link}>
+<Anchor link={ link }>
     <div class="flex items-center hover:text-color-accent">
-        <Heading5>{ item.title }</Heading5>
+        <HeadingFiveLg>{ item.title }</HeadingFiveLg>
         <IconButton size="lg">keyboard_arrow_down</IconButton>
         <slot/>
     </div>
-</a>
+</Anchor>
