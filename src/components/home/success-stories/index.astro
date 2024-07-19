@@ -1,0 +1,92 @@
+---
+
+// IMPORT ASTRO LAYOUTS
+import Container from "@/layouts/container/index.astro"
+
+// IMPORT ASTRO COMPONENTS
+import SuccessCard from "@/components/home/success-stories/card/index.astro"
+
+// IMPORT ASTRO ATOMS
+import ButtonCyanLarge from "@/atoms/atoms-shiva/button/cyan/large/index.astro"
+import HeadingThreeTwoXl from "@/atoms/atoms-shiva/headings/three/two-xl/index.astro"
+import HeadingTwoFiveXl from "@/atoms/atoms-shiva/headings/two/five-xl/index.astro"
+import Link from "@/atoms/links/index.astro"
+
+// HARDCODED DATA
+const data = {
+
+    button_link: "/",
+    button_text: "VIEW ALL",
+    subtitle: "How Our Web Design and Marketing Services Transformed Businesses",
+    title: "Success Stories"
+
+}
+const card_data = [
+    {
+        bg_image: "bg-success-bg-one",
+        read: "READ THE REVIEW",
+        review_image: "/icons/quote.png",
+        review: "“We rank at the Top of page 1 of Google for all important keywords for each location, thanks to The Media Captain. They’re the best we’ve ever worked with.”",
+        subtitle: "LB Music",
+        title: "Lauren Bateman",
+    },
+    {
+        bg_image: "bg-success-bg-two",
+        read: "READ THE REVIEW",
+        review_image: "/icons/quote.png",
+        review: "“TMC has been a reliable web marketing partner for over 10-years for Ability Chiropractic. It’s rare to find these sorts of business relationships.”",
+        subtitle: "Ability Chiropractor",
+        title: "Chris Mabry",
+    },
+    {
+        bg_image: "bg-success-bg-three",
+        read: "READ THE REVIEW",
+        review_image: "/icons/quote.png",
+        review: "“The Media Captain got us away from HubSpot and onto Klaviyo for email marketing. We now generate more than 20% of our revenue via Klaviyo. This was a monumental recommendation.”",
+        subtitle: "Jendo",
+        title: "David Jarvis",
+    },
+]
+
+---
+
+<section class="py-12">
+    <Container>
+        <div class="flex flex-col gap-8">
+            <div class="flex justify-between items-center">
+                <div class="flex flex-col gap-2">
+                    <HeadingTwoFiveXl>{ data.title }</HeadingTwoFiveXl>
+                    <HeadingThreeTwoXl>{ data.subtitle }</HeadingThreeTwoXl>
+                </div>
+                <div class="hidden lg:block">
+                    <Link href={ data.button_link }>
+                        <ButtonCyanLarge>{ data.button_text }</ButtonCyanLarge>
+                    </Link>
+                </div>
+            </div>
+            <div class="flex flex-col gap-4 items-center lg:flex-row lg:justify-between">
+                {
+
+                    card_data.map( ( data ) => (
+
+                        <SuccessCard
+                            bg_image={ data.bg_image }
+                            read={ data.read }
+                            review_image={ data.review_image }
+                            review={ data.review }
+                            subtitle={ data.subtitle }
+                            title={ data.title }
+                        />
+
+                    ) )
+
+                }
+            </div>
+            <div class="lg:hidden w-full">
+                <Link href={ data.button_link }>
+                    <ButtonCyanLarge>{ data.button_text }</ButtonCyanLarge>
+                </Link>
+            </div>
+        </div>
+    </Container>
+</section>
