@@ -1,0 +1,111 @@
+---
+
+// IMPORT ASTRO COMPONENTS
+import MobileScreen from "@/components/home/core-services/mobile-version/index.astro"
+
+// IMPORT ASTRO ATOMS
+import ButtonOrange from "@/atoms/atoms-nandini/buttons/orange/index.astro"
+import HeadingTwo5xlWhite from "@/atoms/atoms-nandini/headings/two/5xl/white/index.astro"
+import HeadingThree2xlWhite from "@/atoms/atoms-nandini/headings/three/2xl/white/index.astro"
+import HeadingTwo5xlSky from "@/atoms/atoms-nandini/headings/two/5xl/sky/index.astro"
+import ParagraphBoldWhite from "@/atoms/atoms-nandini/paragraphs/bold/white/index.astro"
+import ParagraphSmallCenterWhite from "@/atoms/atoms-nandini/paragraphs/sm/center/white/index.astro"
+import ParagraphSmallCenterGray from "@/atoms/atoms-nandini/paragraphs/sm/center/gray/index.astro"
+import ParagraphSmallLightWhite from "@/atoms/atoms-nandini/paragraphs/sm/light/white/index.astro"
+import ParagraphSmallRed from "@/atoms/atoms-nandini/paragraphs/sm/red/index.astro"
+import PictureInternal from "@/atoms/picture/internal/index.astro"
+
+// HARDCODED DATA
+const data ={
+
+    button:"Learn More",
+    desc1:"Unlock your business’s full potential with our",
+    desc2:"comprehensive marketing and web design services.",
+    desc3:"Our clients love that we’re a one-stop shop and leverage our skills across numerous services. Our team will help determine the suite of services that will drive more leads and sales for your business.",
+    input:"web design",
+    sub_title:"Web Design",
+    sub_desc1:"A stunning design to turn visitors into customers",
+    sub_desc2:"The Media Captain has skilled designers, developers, and project managers. We’ll build your company a website that competitors will envy, and your customers will love. Learn more about our smooth-sailing web design process.",
+    title1:"Core",
+    title2:"Services",
+
+}
+
+// ARRAY
+const input=[
+
+    {
+        href:"/#seo",
+        input:"seo",
+    },
+    {
+        href:"/#paid-advertising",
+        input:"paid advertising",
+    },
+    {
+        href:"/#email-marketing",
+        input:"email marketing",
+    },
+    {
+        href:"/#social-media",
+        input:"social media",
+    },
+]
+
+---
+<MobileScreen/>
+
+<section class="bg-black py-10">
+    <div class="hidden md:block mx-7 xl:mx-10 2xl:mx-40">
+        <div class="flex gap-10 border-b-2 pb-10">
+            <div>
+                <HeadingTwo5xlWhite>{ data.title1 }</HeadingTwo5xlWhite>
+                <HeadingTwo5xlSky>{ data.title2 }</HeadingTwo5xlSky>
+            </div>
+            <div class="py-4">
+                <div class="gap-1 flex flex-wrap">
+                    <ParagraphSmallLightWhite>{ data.desc1 }
+                            <a href="/services/"><ParagraphSmallRed>{ data.desc2 }</ParagraphSmallRed></a>
+                    </ParagraphSmallLightWhite>
+                    <ParagraphSmallLightWhite>{ data.desc3 }</ParagraphSmallLightWhite> 
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-4 py-5 mx-5 xl:mx-10 2xl:mx-20">
+            <div class="mt-10">
+                <a href="/#web-design">
+                    <ParagraphSmallCenterWhite>{ data.input }</ParagraphSmallCenterWhite>
+                </a>
+                {
+
+                    input.map( ( item ) => {
+
+                        return (
+
+                                <a href={ item.href }>
+                                    <ParagraphSmallCenterGray>{ item.input }</ParagraphSmallCenterGray>
+                                </a>
+                                
+                            )
+                    })
+
+                }
+
+            </div>
+            <div class="grid leading-6 mx-10 mt-10 col-span-2">
+                <HeadingThree2xlWhite>{ data.sub_title }</HeadingThree2xlWhite>
+                <ParagraphBoldWhite>{ data.sub_desc1 }</ParagraphBoldWhite>
+                <ParagraphSmallLightWhite>{ data.sub_desc2 }</ParagraphSmallLightWhite>
+                <a href="/services/web-design/">
+                    <ButtonOrange>{ data.button }</ButtonOrange>
+                </a>
+            </div>
+            <div class="h-60 w-40 xl:h-80 xl:w-60 2xl:h-96 2xl:w-80 aspect-auto mx-10">
+                <PictureInternal
+                    alternative_text="Mobile-version"
+                    source="/images/phone-image.png"
+                />
+            </div>
+        </div>
+    </div>
+</section>
