@@ -23,7 +23,14 @@ module.exports = {
 
 		},
     	extend: {
-			
+
+			backgroundImage: {
+
+				"success-bg-one": "url('/images/success-stories/success-story-1.png')",
+				"success-bg-two": "url('/images/success-stories/success-story-2.jpeg')",
+				"success-bg-three": "url('/images/success-stories/success-story-3.jpeg')",
+
+			},
 			keyframes: {
 
 				"accordion-down": {
