@@ -111,7 +111,7 @@ const HeroSection = () => {
     return (
 
         <div
-            className="relative h-full w-full md:aspect-[16/7] transition-all duration-1000"
+            className="relative h-dvh md:h-full md:w-full md:aspect-[16/7] transition-all duration-1000"
             style={{ background: currentGradient, transition: "background 4s ease" }}
         >
             {
