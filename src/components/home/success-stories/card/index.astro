@@ -1,0 +1,46 @@
+---
+
+// IMPORT ASTRO ATOMS
+import HeadingFourWhite from "@/atoms/atoms-shiva/headings/four/three-xl/white/index.astro"
+import ParagraphLgOrange from "@/atoms/atoms-shiva/paragraphs/lg/orange/index.astro"
+import ParagraphThreeXlCyan from "@/atoms/atoms-shiva/paragraphs/three-xl/cyan/index.astro"
+import ParagraphXlWhite from "@/atoms/atoms-shiva/paragraphs/xl/white/index.astro"
+import PictureContain from "@/atoms/picture/internal/contain/index.astro"
+
+// IMPORT CUSTOM CSS
+import "@/styles/custom.css"
+
+// GET ASTRO PROPS
+const {
+
+    bg_image,
+    read,
+    review_image,
+    review,
+    subtitle,
+    title,
+
+} = Astro.props
+
+---
+
+<div class="relative w-full max-w-[400px] aspect-[4/5]">
+    <div class="success_card absolute w-full h-full">
+        <div class={`success_card_front flex flex-col justify-end gap-6 p-6 absolute w-full h-full overflow-hidden bg-cover bg-center ${bg_image}`}>
+            <div class="">
+                <HeadingFourWhite>{ title }</HeadingFourWhite>
+                <ParagraphThreeXlCyan>{ subtitle }</ParagraphThreeXlCyan>
+            </div>
+            <ParagraphLgOrange>{ read }</ParagraphLgOrange>
+        </div>
+        <div class="success_card-back flex flex-col gap-6 p-8 absolute w-full h-full overflow-hidden bg-slate-900">
+            <div class="w-16 aspect-square">
+                <PictureContain
+                    alternative_text=""
+                    source={ review_image }
+                />
+            </div>
+            <ParagraphXlWhite>{ review }</ParagraphXlWhite>
+        </div>
+    </div>
+</div>
