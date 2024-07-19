@@ -3,6 +3,7 @@
 // IMPORT ASTRO ATOMS
 import ButtonCyan from "@/atoms/atoms-shiva/button/cyan/index.astro"
 import HeadingsTwoThreeXl from "@/atoms/atoms-shiva/headings/two/three-xl/index.astro"
+import Link from "@/atoms/links/index.astro"
 import ParagraphLg from "@/atoms/atoms-shiva/paragraphs/lg/index.astro"
 import PictureCover from "@/atoms/picture/internal/index.astro"
 
@@ -41,7 +42,7 @@ const data = {
 
 <section class="bg-gray-100 py-12">
     <div class="grid gap-4 grid-cols-1 lg:grid-cols-2">
-        <div class="p-4 w-full aspect-[6/4]">
+        <div class="p-4 w-full aspect-[3/2]">
             <PictureCover
                 alternative_text={ data.alternative_text }
                 source={ data.source }
@@ -57,9 +58,9 @@ const data = {
 
                             part.link ? (
 
-                                <a href={ part.link }>
+                                <Link href={ part.link }>
                                     <span class="text-orange-500 hover:text-cyan-700 duration-300">{ part.text }</span>
-                                </a>
+                                </Link>
 
                             ) : (
 
@@ -71,10 +72,9 @@ const data = {
 
                     }
                 </ParagraphLg>
-                <a href={ data.button_link }>
+                <Link href={ data.button_link }>
                     <ButtonCyan button_text={ data.button_text }/>
-                </a>
-                
+                </Link>
             </div>
         </div>
     </div>
