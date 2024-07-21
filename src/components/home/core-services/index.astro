@@ -1,16 +1,17 @@
 ---
 
-// IMPORT ASTRO COMPONENTS
-import MobileScreen from "@/components/home/core-services/mobile-core-services/index.astro"
+// IMPORT ASTRO LATOUTS
+import Container from "@/layouts/container/index.astro"
 
 // IMPORT ASTRO ATOMS
-import ButtonOrange from "@/atoms/atoms-nandini/buttons/orange/index.astro"
+import ButtonSky from "@/atoms/atoms-nandini/buttons/sky/index.astro"
 import HeadingTwo5xlWhite from "@/atoms/atoms-nandini/headings/two/5xl/white/index.astro"
 import HeadingThree2xlWhite from "@/atoms/atoms-nandini/headings/three/2xl/white/index.astro"
 import HeadingTwo5xlSky from "@/atoms/atoms-nandini/headings/two/5xl/sky/index.astro"
+import Link from "@/atoms/links/index.astro"
+import ListLargeCenterWhite from "@/atoms/atoms-nandini/list-items/lg/center/white/index.astro"
+import ListLargeCenterGray from "@/atoms/atoms-nandini/list-items/lg/center/white/hover-gray/index.astro"
 import ParagraphBoldWhite from "@/atoms/atoms-nandini/paragraphs/bold/white/index.astro"
-import ParagraphSmallCenterWhite from "@/atoms/atoms-nandini/paragraphs/sm/center/white/index.astro"
-import ParagraphSmallCenterGray from "@/atoms/atoms-nandini/paragraphs/sm/center/gray/index.astro"
 import ParagraphSmallLightWhite from "@/atoms/atoms-nandini/paragraphs/sm/light/white/index.astro"
 import ParagraphSmallRed from "@/atoms/atoms-nandini/paragraphs/sm/red/index.astro"
 import PictureInternal from "@/atoms/picture/internal/index.astro"
@@ -35,77 +36,83 @@ const data ={
 const input=[
 
     {
+        aria_label:"link-to-seo",
         href:"/#seo",
         input:"seo",
     },
     {
+        aria_label:"link-to-paid-advertising",
         href:"/#paid-advertising",
         input:"paid advertising",
     },
     {
+        aria_label:"link-to-email-marketing",
         href:"/#email-marketing",
         input:"email marketing",
     },
     {
+        aria_label:"link-to-social-media",
         href:"/#social-media",
         input:"social media",
     },
 ]
 
 ---
-<MobileScreen/>
-
 <section class="bg-black py-10">
-    <div class="hidden md:block mx-7 xl:mx-10 2xl:mx-40">
-        <div class="flex gap-10 border-b-2 pb-10">
-            <div>
-                <HeadingTwo5xlWhite>{ data.title1 }</HeadingTwo5xlWhite>
-                <HeadingTwo5xlSky>{ data.title2 }</HeadingTwo5xlSky>
+    <Container>
+        <div>
+            <div class="md:flex md:gap-10 md:border-b-2 md:pb-10">
+                <div>
+                    <HeadingTwo5xlWhite>{ data.title1 }</HeadingTwo5xlWhite>
+                    <HeadingTwo5xlSky>{ data.title2 }</HeadingTwo5xlSky>
+                </div>
+                <div class="py-4">
+                    <div class="gap-1 flex flex-wrap">
+                        <ParagraphSmallLightWhite>{ data.desc1 }
+                                <Link aria_label="link-to-services" href="/services/"><ParagraphSmallRed>{ data.desc2 }</ParagraphSmallRed></Link>
+                        </ParagraphSmallLightWhite>
+                        <ParagraphSmallLightWhite>{ data.desc3 }</ParagraphSmallLightWhite> 
+                    </div>
+                </div>
             </div>
-            <div class="py-4">
-                <div class="gap-1 flex flex-wrap">
-                    <ParagraphSmallLightWhite>{ data.desc1 }
-                            <a href="/services/"><ParagraphSmallRed>{ data.desc2 }</ParagraphSmallRed></a>
-                    </ParagraphSmallLightWhite>
-                    <ParagraphSmallLightWhite>{ data.desc3 }</ParagraphSmallLightWhite> 
+            <div class="grid row-span-3 gap-5 md:gap-0 md:grid-cols-4 md:py-5">
+                <div class="mt-10">
+                    <Link aria_label="link-to-web-design", href="/#web-design">
+                        <ListLargeCenterWhite>{ data.input }</ListLargeCenterWhite>
+                    </Link>
+                    {
+    
+                        input.map( ( item ) => {
+    
+                            return (
+    
+                                    <Link aria_label={ item.aria_label } href={ item.href }>
+                                        <ListLargeCenterGray>{ item.input }</ListLargeCenterGray>
+                                    </Link>
+                                    
+                                )
+                        })
+    
+                    }
+    
+                </div>
+                <div class="md:mx-10 mt-10 md:col-span-2">
+                    <div class="space-y-4">
+                        <HeadingThree2xlWhite>{ data.sub_title }</HeadingThree2xlWhite>
+                        <ParagraphBoldWhite>{ data.sub_desc1 }</ParagraphBoldWhite>
+                        <ParagraphSmallLightWhite>{ data.sub_desc2 }</ParagraphSmallLightWhite>
+                    </div>
+                    <Link aria_label="learn-more-button" href="/services/web-design/">
+                        <ButtonSky>{ data.button }</ButtonSky>
+                    </Link>
+                </div>
+                <div class="mx-auto w-auto aspect-[3/4]">
+                    <PictureInternal
+                        alternative_text="Mobile-version"
+                        source="/images/phone.png"
+                    />
                 </div>
             </div>
         </div>
-        <div class="grid grid-cols-4 py-5 mx-5 xl:mx-10 2xl:mx-20">
-            <div class="mt-10">
-                <a href="/#web-design">
-                    <ParagraphSmallCenterWhite>{ data.input }</ParagraphSmallCenterWhite>
-                </a>
-                {
-
-                    input.map( ( item ) => {
-
-                        return (
-
-                                <a href={ item.href }>
-                                    <ParagraphSmallCenterGray>{ item.input }</ParagraphSmallCenterGray>
-                                </a>
-                                
-                            )
-                    })
-
-                }
-
-            </div>
-            <div class="grid leading-6 mx-10 mt-10 col-span-2">
-                <HeadingThree2xlWhite>{ data.sub_title }</HeadingThree2xlWhite>
-                <ParagraphBoldWhite>{ data.sub_desc1 }</ParagraphBoldWhite>
-                <ParagraphSmallLightWhite>{ data.sub_desc2 }</ParagraphSmallLightWhite>
-                <a href="/services/web-design/">
-                    <ButtonOrange>{ data.button }</ButtonOrange>
-                </a>
-            </div>
-            <div class="h-60 w-40 xl:h-80 xl:w-60 2xl:h-96 2xl:w-80 aspect-auto mx-10">
-                <PictureInternal
-                    alternative_text="Mobile-version"
-                    source="/images/phone-image.png"
-                />
-            </div>
-        </div>
-    </div>
+    </Container>
 </section>
