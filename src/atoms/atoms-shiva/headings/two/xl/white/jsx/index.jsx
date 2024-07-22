@@ -1,9 +1,9 @@
-const HeadingTwoWhite = ({ children }) => {
+const HeadingTwoWhite = ( props ) => {
 
     return(
 
         <h2 className="text-lg lg:text-xl text-white font-geomanist_book">
-            { children }
+            { props.children }
         </h2>
         
     )
