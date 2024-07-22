@@ -9,40 +9,54 @@ import PictureCover from "@/atoms/picture/internal/index.astro"
 
 // HARDCODED DATA
 const data = {
+
     alternative_text: "",
     button_link: "/",
     button_text: "WORK WITH US",
     description_parts: [
+
         {
+
             link: null,
             text: "The Media Captain was voted a ",
+
         },
         {
+
             link: "/",
             text: "Top 1% Marketing Agency by UpCity.",
+
         },
         {
+
             link: null,
             text: " We’ve earned the trust of hundreds of small, medium, and large-sized clients across many industries. Since 2010, we’ve worked tirelessly to develop thorough processes and a team of skilled marketers, developers, and designers to enhance your brand’s online presence. Nothing makes us happier than helping your business grow. We’re ",
+
         },
         {
+
             link: "/",
             text: "headquartered in Columbus, Ohio",
+
         },
         {
+
             link: null,
             text: " (in the former governor’s mansion), yet we help clients throughout the United States.  Board our ship for a smooth-sailing web marketing experience that will take your company to new heights.",
+
         },
+
     ],
     source: "/images/about.jpg",
     title: "About The Media Captain",
+
 }
 
 ---
 
 <section class="py-12">
     <div class="grid gap-4 grid-cols-1 lg:grid-cols-2">
-        <div class="p-4 w-full aspect-[3/2]">
+        <div class="w-full aspect-[3/2] p-4">
             <PictureCover
                 alternative_text={ data.alternative_text }
                 source={ data.source }
@@ -73,7 +87,7 @@ const data = {
                     }
                 </ParagraphLg>
                 <Link href={ data.button_link }>
-                    <ButtonCyan button_text={ data.button_text }/>
+                    <ButtonCyan>{ data.button_text }</ButtonCyan>
                 </Link>
             </div>
         </div>
