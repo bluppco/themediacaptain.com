@@ -9,40 +9,54 @@ import PictureCover from "@/atoms/picture/internal/index.astro"
 
 // HARDCODED DATA
 const data = {
+
     alternative_text: "",
     button_link: "/",
     button_text: "WORK WITH US",
     description_parts: [
+
         {
+
             link: null,
             text: "With a ",
+
         },
         {
+
             link: "/",
             text: "talented staff of 20 people",
+
         },
         {
+
             link: null,
             text: ", our team is big enough to confidently take on projects of any size. We’re also small enough that you get personalized attention and a team that genuinely cares about growing your business. We’re a ",
+
         },
         {
+
             link: "/",
             text: " family-owned and operated marketing agency.",
+
         },
         {
+
             link: null,
             text: "When you work with us, you get that family feel. We pride ourselves on transparency, communication, and proactiveness.",
+
         },
+
     ],
     source: "/images/differentiation.webp",
     title: "What Differentiates Our Ohio Based Marketing Agency",
+
 }
 
 ---
 
 <section class="bg-gray-100 py-12">
     <div class="grid gap-4 grid-cols-1 lg:grid-cols-2">
-        <div class="p-4 w-full aspect-[3/2]">
+        <div class="w-full aspect-[3/2] p-4">
             <PictureCover
                 alternative_text={ data.alternative_text }
                 source={ data.source }
@@ -54,7 +68,7 @@ const data = {
                 <ParagraphLg>
                     {
 
-                        data.description_parts.map(( part ) => 
+                        data.description_parts.map( ( part ) => 
 
                             part.link ? (
 
@@ -73,7 +87,7 @@ const data = {
                     }
                 </ParagraphLg>
                 <Link href={ data.button_link }>
-                    <ButtonCyan button_text={ data.button_text }/>
+                    <ButtonCyan>{ data.button_text }</ButtonCyan>
                 </Link>
             </div>
         </div>
