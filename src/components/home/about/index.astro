@@ -1,0 +1,95 @@
+---
+
+// IMPORT ASTRO ATOMS
+import ButtonCyan from "@/atoms/atoms-shiva/button/cyan/index.astro"
+import HeadingsTwoThreeXl from "@/atoms/atoms-shiva/headings/two/three-xl/index.astro"
+import Link from "@/atoms/links/index.astro"
+import ParagraphLg from "@/atoms/atoms-shiva/paragraphs/lg/index.astro"
+import PictureCover from "@/atoms/picture/internal/index.astro"
+
+// HARDCODED DATA
+const data = {
+
+    alternative_text: "",
+    button_link: "/",
+    button_text: "WORK WITH US",
+    description_parts: [
+
+        {
+
+            link: null,
+            text: "The Media Captain was voted a ",
+
+        },
+        {
+
+            link: "/",
+            text: "Top 1% Marketing Agency by UpCity.",
+
+        },
+        {
+
+            link: null,
+            text: " We’ve earned the trust of hundreds of small, medium, and large-sized clients across many industries. Since 2010, we’ve worked tirelessly to develop thorough processes and a team of skilled marketers, developers, and designers to enhance your brand’s online presence. Nothing makes us happier than helping your business grow. We’re ",
+
+        },
+        {
+
+            link: "/",
+            text: "headquartered in Columbus, Ohio",
+
+        },
+        {
+
+            link: null,
+            text: " (in the former governor’s mansion), yet we help clients throughout the United States.  Board our ship for a smooth-sailing web marketing experience that will take your company to new heights.",
+
+        },
+
+    ],
+    source: "/images/about.jpg",
+    title: "About The Media Captain",
+
+}
+
+---
+
+<section class="py-12">
+    <div class="grid gap-4 grid-cols-1 lg:grid-cols-2">
+        <div class="w-full aspect-[3/2] p-4">
+            <PictureCover
+                alternative_text={ data.alternative_text }
+                source={ data.source }
+            />
+        </div>
+        <div class="flex lg:items-center justify-center py-6 px-4 xl:pr-32">
+            <div class="flex flex-col gap-4">
+                <HeadingsTwoThreeXl>{ data.title }</HeadingsTwoThreeXl>
+                <ParagraphLg>
+                    {
+
+                        data.description_parts.map(( part ) => 
+
+                            part.link ? (
+
+                                <Link href={ part.link }>
+                                    <span class="text-orange-500 hover:text-cyan-700 duration-300">{ part.text }</span>
+                                </Link>
+
+                            ) : (
+
+                                part.text
+
+                            )
+
+                        )
+
+                    }
+                </ParagraphLg>
+                <Link href={ data.button_link }>
+                    <ButtonCyan>{ data.button_text }</ButtonCyan>
+                </Link>
+            </div>
+        </div>
+    </div>
+</section>

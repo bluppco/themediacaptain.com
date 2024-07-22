@@ -18,3 +18,21 @@
     src: url('/fonts/Geomanist-Light.ttf')
 
 }
+
+/* SUCCESS STORIES CARD STYLES */
+.success_card {
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease;
+}
+
+.success_card:hover {
+    transform: rotateY(180deg);
+}
+
+.success_card_front, .success_card-back {
+    backface-visibility: hidden;
+}
+
+.success_card-back {
+    transform: rotateY(180deg);
+}
