@@ -1,0 +1,78 @@
+---
+
+// IMPORT ASTRO LAYOUTS
+import Container from "@/layouts/container/index.astro"
+
+// IMPORT ASTRO ATOMS
+import PictureInternal from "@/atoms/picture/internal/index.astro"
+import HeadingTwo2xlCenter from "@/atoms/atoms-nandini/headings/two/2xl/center/index.astro"
+import HeadingSixCenter from "@/atoms/atoms-nandini/headings/six/center/index.astro"
+
+// GET ASTRO PROPS
+const data = {
+
+    title:"Our Accomplishments"
+
+}
+
+// Array
+const icons=[
+    
+    {
+        alternative_text:"icon",
+        source:"/icons/accomplishment-1.png",
+        sub_title:"Established In Columbus In 2010",
+    },
+    {
+        alternative_text:"icon",
+        source:"/icons/accomplishment-2.png",
+        sub_title:"Hundreds Of Websites Launched",
+    },
+    {
+        alternative_text:"icon",
+        source:"/icons/accomplishment-3.png",
+        sub_title:"10,000+ Keywords Ranking On P.1 Of Google",
+    },
+    {
+        alternative_text:"icon",
+        source:"/icons/accomplishment-4.png",
+        sub_title:"Voted Top 1% Agency By Upcity & Clutch",
+    },
+    {
+        alternative_text:"icon",
+        source:"/icons/accomplishment-5.png",
+        sub_title:"$100+ Million Generated For Ecom Clients",
+    },
+
+]
+
+---
+<section class="bg-gray-200 py-10">
+    <Container>
+        <div class="space-y-10">
+            <HeadingTwo2xlCenter>{ data.title }</HeadingTwo2xlCenter>
+            <div class="grid grid-rows-5 md:grid-cols-5 md:grid-rows-none justify-center md:justify-between gap-5">
+                {
+                    icons.map( ( item ) => {
+        
+                        return (
+                            
+                                <div>
+                                    <div class="mx-auto w-12 aspect-[6/5]">
+                                        <PictureInternal
+                                            alternative_text={ item.alternative_text }
+                                            source={ item.source }
+                                        />
+                                    </div>
+                                    <HeadingSixCenter>{ item.sub_title }</HeadingSixCenter>
+                                </div>
+        
+                                
+                        )
+                    })
+                }
+                
+            </div>
+        </div>
+    </Container>
+</section>
