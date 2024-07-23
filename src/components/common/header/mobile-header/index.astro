@@ -1,0 +1,24 @@
+---
+
+// IMPORT ASTRO ATOMS
+import IconButton from "@/atoms-diksha/buttons/icon/index.astro"
+import Link from "@/atoms/links/index.astro"
+import Picture from "@/atoms/picture/internal/index.astro"
+
+---
+
+<header class="sticky top-0 z-10 bg-white xl:hidden flex items-center justify-between">
+    <div class="h-10 w-auto">
+        <Link 
+            href="/" 
+            aria_label="The Media Captain"
+        >
+            <Picture 
+                source="/logo/icon-name-logo.png" 
+                alternative_text="logo"
+            />
+        </Link>
+    </div>
+    <!-- implement interactivity of nav menu  -->
+        <IconButton>menu</IconButton>
+</header>

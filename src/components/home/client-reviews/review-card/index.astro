@@ -1,9 +1,10 @@
 ---
 
 //IMPORT ASTRO ATOMS
-import HeadingSixSmBlue from "@/atoms-diksha/headings/six/sm/blue/index.astro"
-import HeadingSixSmGrey from "@/atoms-diksha/headings/six/sm/grey/index.astro"
-import Picture from "@/atoms-diksha/picture/index.astro"
+import HeadingSixSmLightBlue from "@/atoms-diksha/headings/six/sm/light/blue/index.astro"
+import HeadingSixSmLightGrey from "@/atoms-diksha/headings/six/sm/light/grey/index.astro"
+import ParagraphSmLightSlate600 from "@/atoms-diksha/paragraphs/sm/light/slate-600/index.astro"
+import Picture from "@/atoms/picture/internal/index.astro"
 
 //CONSTANTS
 const review = {
@@ -17,38 +18,48 @@ const review = {
 
 ---
 
-<div class="bg-[#f5f5f5] flex-none flex flex-col w-72 h-64 p-2 relative rounded">
+<div class="bg-color-lightGrey flex-none flex flex-col w-72 h-64 p-2 relative rounded">
 	<div class="absolute top-2 right-2">
-		<div class="w-3 h-3">
-			<Picture image_source="/icons/google-logo.svg" image_alt="Google Icon" />
+		<div class="size-3">
+			<Picture 
+				source="/icons/google-logo.svg" 
+				alternative_text="Google Icon" 
+			/>
 		</div>
 	</div>
 	<div class="flex items-center p-2">
-		<div class="w-14 h-14 rounded-full mr-2 overflow-hidden">
-			<Picture image_source={ review.image } image_alt="Avatar" />
+		<div class="size-14 rounded-full mr-2 overflow-hidden">
+			<Picture 
+				source={ review.image } 
+				alternative_text="Avatar"
+			/>
 		</div>
 		<div class="flex flex-col">
-			<HeadingSixSmBlue>{ review.name }</HeadingSixSmBlue>
-			<HeadingSixSmGrey>{ review.date }</HeadingSixSmGrey>
+			<HeadingSixSmLightBlue>{ review.name }</HeadingSixSmLightBlue>
+			<HeadingSixSmLightGrey>{ review.date }</HeadingSixSmLightGrey>
 			<div class="flex items-center">
 				{
-					Array(Math.round(review.rating))
-						.fill(0)
-						.map(() => (
-							<div class="flex space-x-1">
-								<span class="text-orange-400 material-symbols-rounded">star</span>
-							</div>
-						))
+					Array( Math.round( review.rating ) ).fill(0).map(() => (
+						<div class="flex space-x-1">
+							<span class="text-orange-400 material-symbols-rounded">star</span>
+						</div>
+					))
 				}
 			</div>
 		</div>
 	</div>
 	<div class="overflow-scroll">
-		<p class="font-geomanist_light text-lg">{review.review}</p>
+		<p class="font-geomanist_light text-lg">{ review.review }</p>
 	</div>
-	{review.response && 
+	{
+		review.response && 
 		<div class="overflow-scroll max-h-20">
-			<p class="font-geomanist_light text-sm text-slate-600 border-l border-slate-500 pl-2 mt-1"><span class="font-geomanist_book font-medium text-slate-600">Response from the owner:</span> {review.response}</p>
+			<div class="border-l border-slate-500 pl-2 mt-1">
+			<ParagraphSmLightSlate600>
+				<span class="font-geomanist_book">Response from the owner:</span> 
+				{ review.response }
+			</ParagraphSmLightSlate600>
+			</div>
 		</div>
 	}
 </div>

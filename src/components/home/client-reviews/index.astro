@@ -1,37 +1,53 @@
 ---
 
-//IMPORT ASTRO COMPONENTS
+// IMPORT ASTRO LAYOUTS
+import ClientReviewLayout from "@/layouts/home-layout/client-review-layout/index.astro"
+
+// IMPORT ASTRO COMPONENTS
 import GoogleReviewCard from "@/components/home/client-reviews/google-review-card/index.astro"
 import ReviewCard from "@/components/home/client-reviews/review-card/index.astro"
 
-//IMPORT ASTRO ATOMS
-import ButtonGrey from "@/atoms-diksha/buttons/color-grey/index.astro"
-import Heading2 from "@/atoms-diksha/headings/two/6xl/medium/index.astro"
+// IMPORT ASTRO ATOMS
+import ButtonGrey from "@/atoms-diksha/buttons/grey/index.astro"
+import HeadingTwoSixXl from "@/atoms-diksha/headings/two/6xl/index.astro"
+import Link from "@/atoms/links/index.astro"
 import IconButton from "@/atoms-diksha/buttons/icon/index.astro"
 
 ---
 
-<section class="py-12 px-6 md:py-16 md:px-8">
-	<div class="hidden md:flex items-end justify-between">
-		<Heading2>Client Reviews</Heading2>
-		<ButtonGrey>View All</ButtonGrey>
-	</div>
-	<div class="flex flex-col gap-8 justify-between md:flex-row items-center px-6 py-12 md:px-12 md:py-20">
-		<div class="block md:hidden"><Heading2>Client Reviews</Heading2></div>
-		<div class="block"><GoogleReviewCard /></div>
-		<div class="flex">
-			<IconButton size="lg">arrow_back_ios</IconButton>
-			<div class="w-[300px] md:w-[600px] lg:w-[900px] flex gap-4 overflow-x-hidden">
-				{
-					Array(4)
-						.fill(0)
-						.map(() => (
-							<ReviewCard />
-						))
-				}
-			</div>
-			<IconButton size="lg">arrow_forward_ios</IconButton>
-		</div>
-		<div class="block md:hidden"><ButtonGrey>View All</ButtonGrey></div>
-	</div>
-</section>
+<ClientReviewLayout>
+    <div class="hidden md:flex items-end justify-between">
+        <HeadingTwoSixXl>Client Reviews</HeadingTwoSixXl>
+        <Link 
+            href="/"
+            aria_label="view all"
+        > 
+            <ButtonGrey>View All</ButtonGrey>
+        </Link>
+    </div>
+    <div class="flex flex-col gap-8 justify-between md:flex-row items-center px-6 py-12 md:px-12 md:py-20">
+        <div class="md:hidden">
+            <HeadingTwoSixXl>Client Reviews</HeadingTwoSixXl>
+        </div>
+        <GoogleReviewCard />
+        <div class="flex">
+            <IconButton size="lg">arrow_back_ios</IconButton>
+            <div class="w-[300px] md:w-[600px] lg:w-[900px] flex gap-4 overflow-x-hidden">
+              {
+                Array(4).fill(0).map(() => (
+                    <ReviewCard />
+                ))
+              }
+            </div>
+            <IconButton size="lg">arrow_forward_ios</IconButton>
+        </div>
+        <div class="md:hidden">
+           <Link 
+                href="/"
+                aria_label="view all"
+            > 
+                <ButtonGrey>View All</ButtonGrey>
+            </Link>
+        </div>
+    </div>
+</ClientReviewLayout>

@@ -1,18 +1,22 @@
 ---
 
 // IMPORT ASTRO ATOMS
-import Anchor from "@/atoms-diksha/anchor/index.astro"
+import Link from "@/atoms/links/index.astro"
+import ParagraphLgLight from "@/atoms-diksha/paragraphs/lg/light/index.astro"
 
 // GET ASTRO PROPS
 const { 
+
     link, 
     menuItem 
+
 } = Astro.props
 
 ---
 
-<Anchor link={ link }>
-    <p class="text-lg font-geomanist_light font-medium whitespace-nowrap hover:text-color-accent">
-        { menuItem }
-    </p>
-</Anchor>
+<Link 
+    href={ link } 
+    aria-label={ menuItem }
+>
+    <ParagraphLgLight>{ menuItem }</ParagraphLgLight>
+</Link>

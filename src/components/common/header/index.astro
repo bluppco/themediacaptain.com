@@ -1,18 +1,11 @@
 ---
 
 // IMPORT ASTRO LAYOUTS
-import Container from "@/layouts/container/index.astro"
-import { doPreparation } from "astro/virtual-modules/transitions-events.js"
+import HeaderLayout from "@/layouts/header-layout/index.astro"
 
 // IMPORT ASTRO COMPONENTS
-import DropdownItems from "@/components/common/header/nav-items/dropdown-items/index.astro"
-import NavItems from "@/components/common/header/nav-items/index.astro"
-
-// IMPORT ASTRO ATOMS
-import ButtonAccent from "@/atoms-diksha/buttons/color-accent/index.astro"
-import HeadingFiveLg from "@/atoms-diksha/headings/five/lg/index.astro"
-import IconButton from "@/atoms-diksha/buttons/icon/index.astro"
-import Logo from "@/atoms-diksha/logo/index.astro"
+import DesktopHeader from "@/components/common/header/desktop-header/index.astro"
+import MobileHeader from "@/components/common/header/mobile-header/index.astro"
 
 // CONSTANTS
 const nav =[{
@@ -82,42 +75,10 @@ const services =[
 
 ---
 
-<header class="sticky top-0 bg-white">
-    <section class="flex items-center justify-between px-8 py-8 lg:px-16 lg:py-12">
-        <Logo />
-        <!-- nav bar on large screen  -->
-        <div class="hidden lg:flex items-center gap-8">
-            <nav class="flex justify-center gap-8">
-                {   
-                    nav.map((item) => {
-                        if (item.title === "Reviews") {
-                            return <HeadingFiveLg>{ item.title }</HeadingFiveLg>
-                        }
-                        if (item.title === "Services") {
-                            return (
-                                <div class="group relative">
-                                        <NavItems item={ item } link="#" />
-                                </div>
-                            ) 
-                        }
-                        return (
-                            <div class="group relative">
-                                <NavItems item={ item } link="#" />
-                                <div class="absolute top-10 w-64 flex-col gap-4 text-black bg-white py-2 px-8 justify-around hidden group-hover:flex">
-                                    {item.dropdown.map((menuItem) => (
-                                    <DropdownItems link="#" menuItem={ menuItem } />
-                                    ))}
-                                </div>
-                            </div>
-                        );
-                    })
-                }
-              </nav>              
-            <ButtonAccent>Contact us</ButtonAccent>
-        </div>
-        <!-- menu bar on small screen  -->
-        <div class="block lg:hidden">
-            <IconButton>menu</IconButton>
-        </div>
-    </section>
-</header>
+<HeaderLayout>
+    <DesktopHeader 
+        nav={ nav }  
+        services={ services } 
+    />
+    <MobileHeader />
+</HeaderLayout>
