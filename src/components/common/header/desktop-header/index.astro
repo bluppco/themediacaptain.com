@@ -21,28 +21,37 @@ const {
 ---
 
 <header class="sticky top-0 z-10 bg-white hidden xl:flex items-center justify-between">
-    <div class="h-10 w-auto">
+    <div class="h-10 w-auto aspect-auto">
         <Link 
-            href="/" 
             aria_label="The Media Captain"
+            href="/" 
         >
             <Picture 
-                source="/logo/icon-name-logo.png" 
                 alternative_text="logo"
+                source="/logo/icon-name-logo.png" 
             />
         </Link>
     </div>
     <div class="flex items-center gap-8">
         <nav class="flex justify-center gap-8">
             {   
+
                 nav.map( ( item ) => {
+
                     if ( item.title === "Reviews" ) {
+
                         return (
+
                             <HeadingFiveLg>{ item.title }</HeadingFiveLg>
+
                         )
+
                     }
+
                     if ( item.title === "Services" ) {
+
                         return (
+
                             <div class="group relative">
                                 <NavItems 
                                     item={ item } 
@@ -50,9 +59,13 @@ const {
                                 />
                                 {/* services drop down  */}
                             </div>
+
                         ) 
+
                     }
+
                     return (
+
                         <div class="group relative">
                             <NavItems 
                                 item={ item } 
@@ -60,22 +73,29 @@ const {
                             />
                             <div class="absolute top-10 w-64 flex-col gap-4 text-black bg-white py-2 px-8 justify-around hidden group-hover:flex">
                                 {
+
                                     item.dropdown.map( ( menuItem ) => (
+
                                         <DropdownItems 
                                             link="#" 
                                             menuItem={ menuItem } 
                                         />
+
                                     ))
+
                                 }
                             </div>
                         </div>
+
                     );
+
                 })
+
             }
         </nav>              
         <Link 
-            source="/" 
             aria_label="Contact Us"
+            source="/" 
         >
             <ButtonAccent>Contact us</ButtonAccent>
         </Link>

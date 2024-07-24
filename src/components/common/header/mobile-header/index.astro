@@ -8,17 +8,17 @@ import Picture from "@/atoms/picture/internal/index.astro"
 ---
 
 <header class="sticky top-0 z-10 bg-white xl:hidden flex items-center justify-between">
-    <div class="h-10 w-auto">
+    <div class="h-10 w-auto aspect-auto">
         <Link 
-            href="/" 
             aria_label="The Media Captain"
+            href="/" 
         >
             <Picture 
-                source="/logo/icon-name-logo.png" 
                 alternative_text="logo"
+                source="/logo/icon-name-logo.png" 
             />
         </Link>
     </div>
     <!-- implement interactivity of nav menu  -->
-        <IconButton>menu</IconButton>
+    <IconButton>menu</IconButton>
 </header>

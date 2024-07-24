@@ -1,7 +1,7 @@
 ---
 
 // IMPORT ASTRO LAYOUTS
-import HeaderLayout from "@/layouts/header-layout/index.astro"
+import ContainerLarge from "@/layouts/container-large/index.astro"
 
 // IMPORT ASTRO COMPONENTS
 import DesktopHeader from "@/components/common/header/desktop-header/index.astro"
@@ -75,10 +75,10 @@ const services =[
 
 ---
 
-<HeaderLayout>
+<ContainerLarge>
     <DesktopHeader 
         nav={ nav }  
         services={ services } 
     />
     <MobileHeader />
-</HeaderLayout>
+</ContainerLarge>

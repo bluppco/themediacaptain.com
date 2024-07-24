@@ -20,18 +20,18 @@ const review = {
 
 <div class="bg-color-lightGrey flex-none flex flex-col w-72 h-64 p-2 relative rounded">
 	<div class="absolute top-2 right-2">
-		<div class="size-3">
+		<div class="size-3 aspect-auto">
 			<Picture 
+				alternative_text="Google Icon"
 				source="/icons/google-logo.svg" 
-				alternative_text="Google Icon" 
 			/>
 		</div>
 	</div>
 	<div class="flex items-center p-2">
-		<div class="size-14 rounded-full mr-2 overflow-hidden">
+		<div class="size-14 aspect-auto rounded-full mr-2 overflow-hidden">
 			<Picture 
-				source={ review.image } 
 				alternative_text="Avatar"
+				source={ review.image } 
 			/>
 		</div>
 		<div class="flex flex-col">
@@ -39,11 +39,15 @@ const review = {
 			<HeadingSixSmLightGrey>{ review.date }</HeadingSixSmLightGrey>
 			<div class="flex items-center">
 				{
+
 					Array( Math.round( review.rating ) ).fill(0).map(() => (
+
 						<div class="flex space-x-1">
 							<span class="text-orange-400 material-symbols-rounded">star</span>
 						</div>
+
 					))
+					
 				}
 			</div>
 		</div>
