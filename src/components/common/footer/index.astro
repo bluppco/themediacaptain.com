@@ -1,11 +1,71 @@
 ---
 
+// IMPORT ASTRO COLLECTION
+import { getCollection } from 'astro:content'
+
+// IMPORT FOOTER COLUMN ONE COLLECTION
+let footer_column_one = await getCollection('footer-column-one')
+footer_column_one = footer_column_one.sort( ( a, b ) => a.data.order - b.data.order).filter( ( item ) => item.data.live )
+
+// IMPORT FOOTER COLUMN TWO COLLECTION
+let footer_column_two = await getCollection('footer-column-two')
+footer_column_two = footer_column_two.sort( ( a, b ) => a.data.order - b.data.order).filter( ( item ) => item.data.live )
+
+// IMPORT FOOTER COLUMN TWO COLLECTION
+let footer_column_three = await getCollection('footer-column-three')
+footer_column_three = footer_column_three.sort( ( a, b ) => a.data.order - b.data.order).filter( ( item ) => item.data.live )
+
+
+// IMPORT FOOTER COLUMN TWO COLLECTION
+let footer_column_four = await getCollection('footer-column-four')
+footer_column_four = footer_column_four.sort( ( a, b ) => a.data.order - b.data.order).filter( ( item ) => item.data.live )
+
 // IMPORT ASTRO LAYOUTS
 import Container from "@/layouts/container/index.astro"
 
+// IMPORT ASTRO COMPONENTS
+import FooterColumnOne from "@/components/common/footer/column-one/index.astro"
+import FooterColumnTwo from "@/components/common/footer/column-two/index.astro"
+import FooterColumnThree from "@/components/common/footer/column-three/index.astro"
+
+// IMPORT DATA FROM FRONT-MATTER
+import { frontmatter as contactinformation } from "@/content/footer-column-title/contact-information.md"
+import { frontmatter as resources } from "@/content/footer-column-title/resources.md"
+import { frontmatter as services } from "@/content/footer-column-title/services.md"
+import { frontmatter as ourmission } from "@/content/footer-column-title/our-mission.md"
+import { frontmatter as paragraph } from "@/content/footer-column-paragraph/paragraph.md"
+import { frontmatter as recentposts } from "@/content/footer-column-title/recent-posts.md"
+
+// GET ASTRO PROPS
+const OurMission_text  = ourmission.title
+const Paragraph_text  = paragraph.title
+
 ---
-<footer class="bg-black py-20">
+<footer class="bg-black py-20 px-10">
     <Container>
-        <p class="text-white">I am footer</p>
+        <div class="grid grid-cols-4 gap-10">
+            <div>
+                <div class="pb-5 space-y-5">
+                    <p class="text-white font-geomanist_bold uppercase">{ OurMission_text }</p>
+                    <p class="text-gray-400 font-geomanist_book">{ Paragraph_text }</p>
+                </div>
+                <FooterColumnOne
+                    data={ footer_column_one }
+                    title={ resources.title }
+                />
+            </div>
+            <FooterColumnOne
+                data={ footer_column_two }
+                title={ services.title }
+            />
+            <FooterColumnTwo
+                data={ footer_column_three }
+                title={ recentposts.title }
+            />
+            <FooterColumnThree
+                data={ footer_column_four }
+                title={ contactinformation.title }
+            />
+        </div>
     </Container>
 </footer>
