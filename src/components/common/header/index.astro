@@ -1,13 +1,168 @@
 ---
 
 // IMPORT ASTRO LAYOUTS
-import Container from "@/layouts/container/index.astro"
+import ContainerLarge from "@/layouts/container-large/index.astro"
+
+// IMPORT ASTRO COMPONENTS
+import DropdownItems from "@/components/common/header/nav-items/dropdown-items/index.astro"
+import MobileHeader from "@/components/common/header/mobile-header/index.astro"
+import NavItems from "@/components/common/header/nav-items/index.astro"
+
+// IMPORT ASTRO ATOMS
+import ButtonAccent from "@/atoms-diksha/buttons/accent/index.astro"
+import HeadingFiveLg from "@/atoms-diksha/headings/five/lg/index.astro"
+import Link from "@/atoms/links/index.astro"
+import Picture from "@/atoms/picture/internal/index.astro"
+
+// CONSTANTS
+const nav =[{
+    title:"About Us",
+    dropdown:["About Us", "Meet the Team", "Location", "FAQ's", "Accolades", "Featured On"]
+    }, 
+    {
+        title:"Services",
+    },
+    {
+        title:"Industries", 
+        dropdown:["B2B", "Legal", "Medical", "eCommerce", "Beauty", "Home Services", "View All"]    
+    },
+    {
+        title:"Portfolio",
+        dropdown:["Website Portfolio", "Marketing Succes Stories"]
+    },
+    {
+        title:"Resources",
+        dropdown:["Marketing Events", "Blog", "Youtube Channel"]  
+    },
+    {
+        title:"Reviews",
+    }
+]
+
+const services =[
+    {
+        title:"Marketing",
+        services:[
+            {serviceName: "SEO"}, 
+            {
+                serviceName:"Paid Adverstising",
+                subServices:["PPC", "Shopping", "Amazon", "Social Media"]
+            }, 
+            {
+                serviceName:"Email Marketing",
+                subServices:["SMS Marketing", "Klaviyo"]
+            }, 
+            {
+                serviceName:"Social Media",
+                subServices:["Social Posts", "Social Ads"]
+            },
+        ]
+    },
+    {
+        title:"Web Design & Development",
+        services:[
+            {serviceName: "Web design"}, 
+            {serviceName: "Graphic design"}, 
+            {serviceName: "WordPress"}, 
+            {
+                serviceName:"eCommerce",
+                subServices:["WooCommerce", "Shopify"]
+            }, 
+        ]
+    },
+    {
+        title:"Other Services",
+        services:[
+            {serviceName: "Amazon"},
+            {serviceName: "HubSpot"},
+            {serviceName: "Review Management"},
+        ]
+    }
+]
 
 ---
-<header class="bg-blue-600 h-12">
-    <Container>
-        <section class="flex items-center h-full">
-            <p class="text-white">I am header</p>
-        </section>
-    </Container>
-</header>
+
+<ContainerLarge>
+    <header class="sticky top-0 z-10 bg-white hidden xl:flex items-center justify-between">
+        <div class="h-10 aspect-[9.1/1.2]">
+            <Link 
+                aria_label="The Media Captain"
+                href="/" 
+            >
+                <Picture 
+                    alternative_text="logo"
+                    source="/logo/icon-name-logo.png" 
+                />
+            </Link>
+        </div>
+        <div class="flex items-center gap-8">
+            <nav class="flex justify-center gap-8">
+                {   
+    
+                    nav.map( ( item ) => {
+    
+                        if ( item.title === "Reviews" ) {
+    
+                            return (
+    
+                                <HeadingFiveLg>{ item.title }</HeadingFiveLg>
+    
+                            )
+    
+                        }
+    
+                        if ( item.title === "Services" ) {
+    
+                            return (
+    
+                                <div class="group relative">
+                                    <NavItems 
+                                        item={ item } 
+                                        link="#" 
+                                    />
+                                    {/* services drop down  */}
+                                </div>
+    
+                            ) 
+    
+                        }
+    
+                        return (
+    
+                            <div class="group relative">
+                                <NavItems 
+                                    item={ item } 
+                                    link="#" 
+                                />
+                                <div class="absolute top-10 w-64 flex-col gap-4 bg-white py-2 px-8 justify-around hidden group-hover:flex">
+                                    {
+    
+                                        item.dropdown.map( ( menuItem ) => (
+    
+                                            <DropdownItems 
+                                                link="#" 
+                                                menuItem={ menuItem } 
+                                            />
+    
+                                        ))
+    
+                                    }
+                                </div>
+                            </div>
+    
+                        );
+    
+                    })
+    
+                }
+            </nav>              
+            <Link 
+                aria_label="Contact Us"
+                source="/" 
+            >
+                <ButtonAccent>Contact us</ButtonAccent>
+            </Link>
+        </div>
+    </header>
+    <MobileHeader />
+</ContainerLarge>

@@ -1,0 +1,22 @@
+---
+
+// IMPORT ASTRO ATOMS
+import Link from "@/atoms/links/index.astro"
+import ParagraphLgLight from "@/atoms-diksha/paragraphs/lg/light/index.astro"
+
+// GET ASTRO PROPS
+const { 
+
+    link, 
+    menuItem 
+
+} = Astro.props
+
+---
+
+<Link 
+    aria_label={ menuItem }
+    href={ link } 
+>
+    <ParagraphLgLight>{ menuItem }</ParagraphLgLight>
+</Link>

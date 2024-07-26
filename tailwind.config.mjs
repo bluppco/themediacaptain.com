@@ -46,7 +46,11 @@ module.exports = {
 
 			},
 			colors: {
-
+				color:{
+					accent:"#f37b43",
+					grey:"#759db2",
+					lightGrey:"#f5f5f5"
+				}
 
 			},
 			fontFamily: {
