@@ -3,7 +3,7 @@
 //IMPORT ASTRO ATOMS
 import HeadingSixSmLightBlue from "@/atoms-diksha/headings/six/sm/light/blue/index.astro"
 import HeadingSixSmLightGrey from "@/atoms-diksha/headings/six/sm/light/grey/index.astro"
-import ParagraphSmLightSlate600 from "@/atoms-diksha/paragraphs/sm/light/slate-600/index.astro"
+import ParagraphSmLightSlate from "@/atoms-diksha/paragraphs/sm/light/slate/index.astro"
 import Picture from "@/atoms/picture/internal/index.astro"
 
 //CONSTANTS
@@ -20,7 +20,7 @@ const review = {
 
 <div class="bg-color-lightGrey flex-none flex flex-col w-72 h-64 p-2 relative rounded">
 	<div class="absolute top-2 right-2">
-		<div class="size-3 aspect-auto">
+		<div class="size-3">
 			<Picture 
 				alternative_text="Google Icon"
 				source="/icons/google-logo.svg" 
@@ -28,7 +28,7 @@ const review = {
 		</div>
 	</div>
 	<div class="flex items-center p-2">
-		<div class="size-14 aspect-auto rounded-full mr-2 overflow-hidden">
+		<div class="size-14rounded-full mr-2 overflow-hidden">
 			<Picture 
 				alternative_text="Avatar"
 				source={ review.image } 
@@ -59,10 +59,10 @@ const review = {
 		review.response && 
 		<div class="overflow-scroll max-h-20">
 			<div class="border-l border-slate-500 pl-2 mt-1">
-			<ParagraphSmLightSlate600>
+			<ParagraphSmLightSlate>
 				<span class="font-geomanist_book">Response from the owner:</span> 
 				{ review.response }
-			</ParagraphSmLightSlate600>
+			</ParagraphSmLightSlate>
 			</div>
 		</div>
 	}

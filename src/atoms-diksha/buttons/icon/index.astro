@@ -1,10 +1,10 @@
 ---
 
 // GET ASTRO PROPS
-const { size } = Astro.props;
+const { size } = Astro.props
 
 ---
 
-<button class=`material-symbols-outlined text-${size}`>
+<button class={`material-symbols-outlined text-${size}`}>
     <slot />
 </button>
