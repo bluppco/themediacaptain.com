@@ -2,15 +2,23 @@
 
 // IMPORT ASTRO ATOMS
 import Link from "@/atoms/links/index.astro"
-// import ListitemSmallGray from "@/atoms/atoms-nandini/list-items/sm/gray/index.astro"
-// import ParagraphMediumZinc from "@/atoms/atoms-nandini/paragraphs/medium/zinc/index.astro"
+import ListitemGrayBorderGray from "@/atoms/atoms-nandini/list-items/gray/border-gray/index.astro"
+import ParagraphWhiteUppercase from "@/atoms/atoms-nandini/paragraphs/white/uppercase/index.astro"
+import PictureInternal from "@/atoms/picture/internal/index.astro"
 
 // GET ASTRO PROPS
 const { data , title } = Astro.props
 
 ---
 <section>
-    <p class="text-white font-geomanist_bold uppercase">{ title }</p>
+    <ParagraphWhiteUppercase>{ title }
+        <span class="inline-block size-3 rotate-90">
+            <PictureInternal
+                alternative_text="Icon"
+                source="/icons/triangle.svg"
+            />
+        </span>
+    </ParagraphWhiteUppercase>
     <ul class="pt-5">
         {
 
@@ -18,14 +26,14 @@ const { data , title } = Astro.props
 
                 return (
                     
-                        <li class="text-gray-400 font-geomanist_book border-b-2 border-gray-800 py-6">
+                        <ListitemGrayBorderGray>
                             <Link
                                 aria-label={ "explore " + item.data.title }
                                 href={ item.data.link }
                             >
                                 { item.data.title }
                             </Link>
-                        </li>
+                        </ListitemGrayBorderGray>
 
                 )
             })

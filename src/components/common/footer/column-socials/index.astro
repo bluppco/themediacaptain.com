@@ -1,0 +1,33 @@
+---
+
+// IMPORT ASTRO ATOMS
+import Link from "@/atoms/links/index.astro"
+import PictureInternal from "@/atoms/picture/internal/index.astro"
+
+// GET ASTRO PROPS
+const { data } = Astro.props
+
+---
+<section>
+    <div class="flex justify-end gap-2 md:justify-between">
+        {
+
+            data.map( ( item ) => {
+
+                return (
+                    
+                        <div class="size-5">
+                            <Link aria_label={ item.alternative_text } href={ item.data.link }>
+                                <PictureInternal
+                                    alternative_text={ item.data.alternative_text }
+                                    source={ item.data.source }
+                                />
+                            </Link>
+                        </div>
+
+                )
+            })
+        }
+    </div>
+        
+</section>

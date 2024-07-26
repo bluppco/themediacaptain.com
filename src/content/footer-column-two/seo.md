@@ -1,6 +1,6 @@
 ---
 order: 1
 live: true
-title: Seo
+title: SEO
 link: /services/seo/
 ---

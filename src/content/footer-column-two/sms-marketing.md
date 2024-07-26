@@ -1,6 +1,6 @@
 ---
 order: 4
 live: true
-title: Sms marketing
+title: SMS marketing
 link: /services/sms-marketing/
 ---
