@@ -1,11 +1,97 @@
 ---
 
+// IMPORT ASTRO COLLECTION
+import { getCollection } from 'astro:content'
+
+// IMPORT FOOTER COLUMN ONE COLLECTION
+let footer_column_one = await getCollection('footer-column-one')
+footer_column_one = footer_column_one.sort( ( a, b ) => a.data.order - b.data.order).filter( ( item ) => item.data.live )
+
+// IMPORT FOOTER COLUMN TWO COLLECTION
+let footer_column_two = await getCollection('footer-column-two')
+footer_column_two = footer_column_two.sort( ( a, b ) => a.data.order - b.data.order).filter( ( item ) => item.data.live )
+
+// IMPORT FOOTER COLUMN THREE COLLECTION
+let footer_column_three = await getCollection('footer-column-three')
+footer_column_three = footer_column_three.sort( ( a, b ) => a.data.order - b.data.order).filter( ( item ) => item.data.live )
+
+// IMPORT FOOTER COLUMN FOUR COLLECTION
+let footer_column_four = await getCollection('footer-column-four')
+footer_column_four = footer_column_four.sort( ( a, b ) => a.data.order - b.data.order).filter( ( item ) => item.data.live )
+
+// IMPORT FOOTER COLUMN SOCIAL COLLECTION
+let footer_column_social = await getCollection('footer-column-social')
+footer_column_social = footer_column_social.sort( ( a, b ) => a.data.order - b.data.order).filter( ( item ) => item.data.live )
+
 // IMPORT ASTRO LAYOUTS
 import Container from "@/layouts/container/index.astro"
 
+// IMPORT ASTRO COMPONENTS
+import FooterColumnOne from "@/components/common/footer/column-one/index.astro"
+import FooterColumnTwo from "@/components/common/footer/column-two/index.astro"
+import FooterColumnThree from "@/components/common/footer/column-three/index.astro"
+import FooterColumnSocial from "@/components/common/footer/column-socials/index.astro"
+
+// IMPORT ASTRO ATOMS
+import ParagraphGray from "@/atoms/atoms-nandini/paragraphs/gray/index.astro"
+import ParagraphLeftWhite from "@/atoms/atoms-nandini/paragraphs/left/white/index.astro"
+import ParagraphWhiteUppercase from "@/atoms/atoms-nandini/paragraphs/white/uppercase/index.astro"
+import PictureInternal from "@/atoms/picture/internal/index.astro"
+
+// IMPORT DATA FROM FRONT-MATTER
+import { frontmatter as contactinformation } from "@/content/footer-column-title/contact-information.md"
+import { frontmatter as resources } from "@/content/footer-column-title/resources.md"
+import { frontmatter as services } from "@/content/footer-column-title/services.md"
+import { frontmatter as ourmission } from "@/content/footer-column-title/our-mission.md"
+import { frontmatter as paragraph } from "@/content/footer-column-paragraph/paragraph.md"
+import { frontmatter as copyrightdata } from "@/content/footer-column-paragraph/copyright-data.md"
+import { frontmatter as recentposts } from "@/content/footer-column-title/recent-posts.md"
+
+// GET ASTRO PROPS
+const copyright_text  = copyrightdata.title
+const OurMission_text  = ourmission.title
+const Paragraph_text  = paragraph.title
+
 ---
-<footer class="bg-black py-20">
+<footer class="bg-black pt-20 pb-4 px-10">
     <Container>
-        <p class="text-white">I am footer</p>
+        <div class="grid grid-rows-4 md:grid-rows-none md:grid-cols-4 gap-20 xl:gap-36 pb-14">
+            <div>
+                <div class="pb-5 space-y-5">
+                    <ParagraphWhiteUppercase>{ OurMission_text } 
+                        <span class="inline-block size-3 rotate-90">
+                            <PictureInternal
+                                alternative_text="Icon"
+                                source="/icons/triangle.svg"
+                            />
+                        </span>
+                    </ParagraphWhiteUppercase>
+                    <ParagraphGray>{ Paragraph_text }</ParagraphGray>
+                </div>
+                <FooterColumnOne
+                    data={ footer_column_one }
+                    title={ resources.title }
+                />
+            </div>
+            <FooterColumnOne
+                data={ footer_column_two }
+                title={ services.title }
+            />
+            <FooterColumnTwo
+                data={ footer_column_three }
+                title={ recentposts.title }
+            />
+            <FooterColumnThree
+                data={ footer_column_four }
+                title={ contactinformation.title }
+            />
+        </div>
+        <div class="md:flex justify-between space-y-4 md:space-y-0">
+            <ParagraphLeftWhite>{ copyright_text }</ParagraphLeftWhite>
+            <div>
+                <FooterColumnSocial data={ footer_column_social }/>
+            </div>
+        </div>
+        
     </Container>
 </footer>
