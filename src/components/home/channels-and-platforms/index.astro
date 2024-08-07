@@ -1,0 +1,42 @@
+---
+
+// IMPORT ASTRO LAYOUTS
+import ContainerSmall from "@/layouts/container-small/index.astro"
+
+// IMPORT ASTRO ATOMS
+import HeadingTwoFiveXlGray from "@/atoms/atoms-shiva/headings/two/five-xl/gray/index.astro"
+import HeadingTwoFiveXlWhite from "@/atoms/atoms-shiva/headings/two/five-xl/white/index.astro"
+import ParagraphLgWhite from "@/atoms/atoms-shiva/paragraphs/lg/white/index.astro"
+import PictureContain from "@/atoms/picture/internal/contain/index.astro"
+
+// HARDCODED DATA
+const data ={
+
+    description: "When it comes to marketing and advertising, there are a lot of options. We will help you select the channels that make the most sense for your business and your budget. Our marketing fee is not based on ad spend, which helps us pick the best places to market unbiasedly. You will have a dedicated strategist from our team assigned to your account who’s extremely versed in the most critical areas of your business.",
+    source: "/logo/platform.png",
+    subtitle: "Channels & Platforms",
+    title: "Our Most Popular",
+
+}
+
+---
+
+<section class="bg-color-darkGray py-16">
+    <ContainerSmall>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div class="flex flex-col justify-center gap-4">
+                <div>
+                    <HeadingTwoFiveXlWhite>{ data.title }</HeadingTwoFiveXlWhite>
+                    <HeadingTwoFiveXlGray>{ data.subtitle }</HeadingTwoFiveXlGray>
+                </div>
+                <ParagraphLgWhite>{ data.description }</ParagraphLgWhite>
+            </div>
+            <div class="w-full aspect-[5/3]">
+                <PictureContain
+                    alternative_text=""
+                    source={ data.source }
+                />
+            </div>
+        </div>
+    </ContainerSmall>
+</section>
