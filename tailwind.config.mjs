@@ -49,7 +49,8 @@ module.exports = {
 				color:{
 					accent:"#f37b43",
 					grey:"#759db2",
-					lightGrey:"#f5f5f5"
+					light_gray:"#f5f5f5",
+					dark_gray: "#131e29",
 				}
 
 			},
